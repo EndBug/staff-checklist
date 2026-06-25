@@ -51,6 +51,7 @@
     "closingTitle": "Checklist chiusura",
     "openingDescription": "Registra lo stato della checklist istruttori per l'apertura.",
     "closingDescription": "Registra lo stato della checklist istruttori per la chiusura.",
+    "closingReminder": "Ricordati di spegnere tutte le luci e chiudere i cancelli.",
     "instructorName": "Nome istruttore",
     "instructorNamePlaceholder": "Seleziona istruttore",
     "statusAriaLabel": "Stato {field}",

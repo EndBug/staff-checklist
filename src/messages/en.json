@@ -51,6 +51,7 @@
     "closingTitle": "Closing Checklist",
     "openingDescription": "Record the instructor checklist status for opening.",
     "closingDescription": "Record the instructor checklist status for closing.",
+    "closingReminder": "Remember to turn off all lights and close the gates.",
     "instructorName": "Instructor name",
     "instructorNamePlaceholder": "Select instructor",
     "statusAriaLabel": "{field} status",

@@ -153,6 +153,15 @@ export function SubmissionForm({
           <DialogDescription>{description}</DialogDescription>
         </DialogHeader>
 
+        {submissionType === "closing" ? (
+          <p
+            className="rounded-lg border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-sm text-amber-950 dark:text-amber-100"
+            role="note"
+          >
+            {t("closingReminder")}
+          </p>
+        ) : null}
+
         <form onSubmit={handleSubmit} className="space-y-5">
           <div className="space-y-2">
             <Label htmlFor="instructor-name">{t("instructorName")}</Label>
