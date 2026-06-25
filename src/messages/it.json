@@ -1,0 +1,63 @@
+{
+  "metadata": {
+    "title": "Staff Checklist",
+    "description": "Checklist di apertura e chiusura per AeroGravity"
+  },
+  "header": {
+    "title": "Staff Checklist"
+  },
+  "language": {
+    "it": "IT",
+    "en": "EN",
+    "switchTo": "Passa a {language}"
+  },
+  "theme": {
+    "label": "Tema",
+    "light": "Chiaro",
+    "dark": "Scuro",
+    "system": "Sistema",
+    "switchTo": "Passa al tema {theme}"
+  },
+  "convex": {
+    "notConfiguredTitle": "Convex non configurato",
+    "notConfiguredDescription": "Esegui {convexDev} in un altro terminale, oppure usa {dev} per avviare Convex e Next.js insieme. Verrà creato {envFile} con {envVar}."
+  },
+  "instructors": {
+    "title": "Istruttori",
+    "description": "Invia le checklist di apertura e chiusura per le attrezzature degli istruttori.",
+    "lastStatusTitle": "Ultimo stato inviato",
+    "loadingSubmission": "Caricamento ultimo invio...",
+    "noSubmissions": "Nessun invio ancora.",
+    "lastSubmission": "Inviato il {date} da {name} ({type})",
+    "openingChecklist": "Apertura",
+    "closingChecklist": "Chiusura",
+    "fields": {
+      "coolingSystem": "Sistema di raffreddamento",
+      "antechamberTv": "TV antecamera",
+      "replayScreens": "Schermi replay",
+      "downstairsScreen": "Schermo piano inferiore"
+    },
+    "status": {
+      "on": "ON",
+      "off": "OFF",
+      "notSet": "Non impostato"
+    },
+    "submissionType": {
+      "opening": "apertura",
+      "closing": "chiusura"
+    }
+  },
+  "submissionForm": {
+    "openingTitle": "Checklist apertura",
+    "closingTitle": "Checklist chiusura",
+    "openingDescription": "Registra lo stato della checklist istruttori per l'apertura.",
+    "closingDescription": "Registra lo stato della checklist istruttori per la chiusura.",
+    "instructorName": "Nome istruttore",
+    "instructorNamePlaceholder": "Inserisci il tuo nome",
+    "statusAriaLabel": "Stato {field}",
+    "cancel": "Annulla",
+    "submit": "Invia",
+    "submitting": "Invio in corso...",
+    "submitFailed": "Invio checklist non riuscito"
+  }
+}

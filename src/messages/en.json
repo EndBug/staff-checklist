@@ -1,0 +1,63 @@
+{
+  "metadata": {
+    "title": "Staff Checklist",
+    "description": "Opening and closing staff checklists for AeroGravity"
+  },
+  "header": {
+    "title": "Staff Checklist"
+  },
+  "language": {
+    "it": "IT",
+    "en": "EN",
+    "switchTo": "Switch to {language}"
+  },
+  "theme": {
+    "label": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "switchTo": "Switch to {theme} theme"
+  },
+  "convex": {
+    "notConfiguredTitle": "Convex is not configured",
+    "notConfiguredDescription": "Run {convexDev} in a separate terminal, or use {dev} to start Convex and Next.js together. This creates {envFile} with {envVar}."
+  },
+  "instructors": {
+    "title": "Instructors",
+    "description": "Submit opening and closing checklists for instructor equipment.",
+    "lastStatusTitle": "Last submitted status",
+    "loadingSubmission": "Loading latest submission...",
+    "noSubmissions": "No submissions yet.",
+    "lastSubmission": "Submitted {date} by {name} ({type})",
+    "openingChecklist": "Opening",
+    "closingChecklist": "Closing",
+    "fields": {
+      "coolingSystem": "Cooling system",
+      "antechamberTv": "Antechamber TV",
+      "replayScreens": "Replay screens",
+      "downstairsScreen": "Downstairs screen"
+    },
+    "status": {
+      "on": "ON",
+      "off": "OFF",
+      "notSet": "Not set"
+    },
+    "submissionType": {
+      "opening": "opening",
+      "closing": "closing"
+    }
+  },
+  "submissionForm": {
+    "openingTitle": "Opening Checklist",
+    "closingTitle": "Closing Checklist",
+    "openingDescription": "Record the instructor checklist status for opening.",
+    "closingDescription": "Record the instructor checklist status for closing.",
+    "instructorName": "Instructor name",
+    "instructorNamePlaceholder": "Enter your name",
+    "statusAriaLabel": "{field} status",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "submitting": "Submitting...",
+    "submitFailed": "Failed to submit checklist"
+  }
+}
