@@ -6,6 +6,10 @@ import { useState } from "react";
 
 import { api } from "../../../convex/_generated/api";
 import {
+  INSTRUCTORS,
+  formatInstructorName,
+} from "../../../convex/instructors";
+import {
   EMPTY_INSTRUCTOR_CHECKLIST_VALUES,
   INSTRUCTOR_CHECKLIST_FIELDS,
   type InstructorChecklistValues,
@@ -22,7 +26,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from "~/components/ui/dialog";
-import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
 
 type SubmissionFormProps = {
@@ -153,14 +156,29 @@ export function SubmissionForm({
         <form onSubmit={handleSubmit} className="space-y-5">
           <div className="space-y-2">
             <Label htmlFor="instructor-name">{t("instructorName")}</Label>
-            <Input
+            <select
               id="instructor-name"
               value={instructorName}
               onChange={(event) => setInstructorName(event.target.value)}
-              placeholder={t("instructorNamePlaceholder")}
-              autoComplete="name"
               required
-            />
+              className={cn(
+                "h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 md:text-sm dark:bg-input/30",
+                !instructorName && "text-muted-foreground",
+              )}
+            >
+              <option value="" disabled>
+                {t("instructorNamePlaceholder")}
+              </option>
+              {INSTRUCTORS.map((instructor) => {
+                const name = formatInstructorName(instructor);
+
+                return (
+                  <option key={name} value={name}>
+                    {name}
+                  </option>
+                );
+              })}
+            </select>
           </div>
 
           <div className="space-y-4">

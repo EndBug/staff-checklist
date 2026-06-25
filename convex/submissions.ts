@@ -1,5 +1,6 @@
 import { v } from "convex/values";
 
+import { isValidInstructorName } from "./instructors";
 import { mutation, query } from "./_generated/server";
 
 const nullableBoolean = v.union(v.boolean(), v.null());
@@ -19,6 +20,10 @@ export const submitChecklist = mutation({
 
     if (!instructorName) {
       throw new Error("Instructor name is required");
+    }
+
+    if (!isValidInstructorName(instructorName)) {
+      throw new Error("Invalid instructor name");
     }
 
     return await ctx.db.insert("submissions", {

@@ -53,7 +53,7 @@
     "openingDescription": "Registra lo stato della checklist istruttori per l'apertura.",
     "closingDescription": "Registra lo stato della checklist istruttori per la chiusura.",
     "instructorName": "Nome istruttore",
-    "instructorNamePlaceholder": "Inserisci il tuo nome",
+    "instructorNamePlaceholder": "Seleziona istruttore",
     "statusAriaLabel": "Stato {field}",
     "cancel": "Annulla",
     "submit": "Invia",

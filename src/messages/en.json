@@ -53,7 +53,7 @@
     "openingDescription": "Record the instructor checklist status for opening.",
     "closingDescription": "Record the instructor checklist status for closing.",
     "instructorName": "Instructor name",
-    "instructorNamePlaceholder": "Enter your name",
+    "instructorNamePlaceholder": "Select instructor",
     "statusAriaLabel": "{field} status",
     "cancel": "Cancel",
     "submit": "Submit",
