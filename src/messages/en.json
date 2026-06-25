@@ -23,7 +23,7 @@
     "notConfiguredDescription": "Run {convexDev} in a separate terminal, or use {dev} to start Convex and Next.js together. This creates {envFile} with {envVar}."
   },
   "instructors": {
-    "title": "Instructors",
+    "title": "Instructors Checklist",
     "description": "Submit opening and closing checklists for instructor equipment.",
     "lastStatusTitle": "Last submitted status",
     "loadingSubmission": "Loading latest submission...",

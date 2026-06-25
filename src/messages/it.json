@@ -23,7 +23,7 @@
     "notConfiguredDescription": "Esegui {convexDev} in un altro terminale, oppure usa {dev} per avviare Convex e Next.js insieme. Verrà creato {envFile} con {envVar}."
   },
   "instructors": {
-    "title": "Istruttori",
+    "title": "Checklist Istruttori",
     "description": "Invia le checklist di apertura e chiusura per le attrezzature degli istruttori.",
     "lastStatusTitle": "Ultimo stato inviato",
     "loadingSubmission": "Caricamento ultimo invio...",

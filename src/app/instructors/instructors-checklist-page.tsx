@@ -85,13 +85,13 @@ export function InstructorsChecklistPage() {
 
       <div className="flex flex-col gap-3 sm:flex-row">
         <Button
-          className="flex-1"
+          className="h-12 flex-1 text-base"
           onClick={() => setActiveSubmissionType("opening")}
         >
           {t("openingChecklist")}
         </Button>
         <Button
-          className="flex-1"
+          className="h-12 flex-1 text-base"
           onClick={() => setActiveSubmissionType("closing")}
         >
           {t("closingChecklist")}
