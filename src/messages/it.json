@@ -24,7 +24,6 @@
   },
   "instructors": {
     "title": "Checklist Istruttori",
-    "description": "Invia le checklist di apertura e chiusura per le attrezzature degli istruttori.",
     "lastStatusTitle": "Ultimo stato inviato",
     "loadingSubmission": "Caricamento ultimo invio...",
     "noSubmissions": "Nessun invio ancora.",

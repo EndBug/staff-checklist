@@ -24,7 +24,6 @@
   },
   "instructors": {
     "title": "Instructors Checklist",
-    "description": "Submit opening and closing checklists for instructor equipment.",
     "lastStatusTitle": "Last submitted status",
     "loadingSubmission": "Loading latest submission...",
     "noSubmissions": "No submissions yet.",
