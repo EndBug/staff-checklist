@@ -31,7 +31,7 @@
     "openingChecklist": "Apertura",
     "closingChecklist": "Chiusura",
     "fields": {
-      "coolingSystem": "Sistema di raffreddamento",
+      "coolingSystem": "Cooling system",
       "antechamberTv": "TV antecamera",
       "replayScreens": "Schermi replay",
       "downstairsScreen": "Schermo piano inferiore"
