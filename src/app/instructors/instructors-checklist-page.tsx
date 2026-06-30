@@ -9,7 +9,7 @@ import { api } from "../../../convex/_generated/api";
 import { SubmissionForm } from "~/app/_components/submission-form";
 import { SubmissionStatusFields } from "~/app/_components/submission-status-fields";
 import { type SubmissionType } from "~/lib/checklist";
-import { Button } from "~/components/ui/button";
+import { Button, buttonVariants } from "~/components/ui/button";
 import {
   Card,
   CardContent,
@@ -87,9 +87,12 @@ export function InstructorsChecklistPage() {
       ) : null}
 
       <div className="text-center">
-        <Button variant="link" render={<Link href="/instructors/submissions" />}>
+        <Link
+          href="/instructors/submissions"
+          className={buttonVariants({ variant: "link" })}
+        >
           {t("seeAllSubmissions")}
-        </Button>
+        </Link>
       </div>
     </main>
   );
