@@ -44,7 +44,15 @@
     "submissionType": {
       "opening": "apertura",
       "closing": "chiusura"
-    }
+    },
+    "seeAllSubmissions": "Vedi tutti gli invii",
+    "submissionsTitle": "Invii",
+    "loadingSubmissions": "Caricamento invii...",
+    "noSubmissionsForDay": "Nessun invio per questo giorno.",
+    "previousDay": "Giorno precedente",
+    "nextDay": "Giorno successivo",
+    "pickDate": "Scegli una data",
+    "submissionMeta": "{time} — {name} ({type})"
   },
   "submissionForm": {
     "openingTitle": "Checklist apertura",

@@ -44,7 +44,15 @@
     "submissionType": {
       "opening": "opening",
       "closing": "closing"
-    }
+    },
+    "seeAllSubmissions": "See all submissions",
+    "submissionsTitle": "Submissions",
+    "loadingSubmissions": "Loading submissions...",
+    "noSubmissionsForDay": "No submissions for this day.",
+    "previousDay": "Previous day",
+    "nextDay": "Next day",
+    "pickDate": "Pick a date",
+    "submissionMeta": "{time} — {name} ({type})"
   },
   "submissionForm": {
     "openingTitle": "Opening Checklist",

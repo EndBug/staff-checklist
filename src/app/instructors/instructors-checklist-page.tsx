@@ -1,16 +1,14 @@
 "use client";
 
 import { useQuery } from "convex/react";
+import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 
 import { api } from "../../../convex/_generated/api";
 import { SubmissionForm } from "~/app/_components/submission-form";
-import {
-  INSTRUCTOR_CHECKLIST_FIELDS,
-  getStatusDisplay,
-  type SubmissionType,
-} from "~/lib/checklist";
+import { SubmissionStatusFields } from "~/app/_components/submission-status-fields";
+import { type SubmissionType } from "~/lib/checklist";
 import { Button } from "~/components/ui/button";
 import {
   Card,
@@ -28,12 +26,6 @@ export function InstructorsChecklistPage() {
   });
   const [activeSubmissionType, setActiveSubmissionType] =
     useState<SubmissionType | null>(null);
-
-  const statusLabels = {
-    on: t("status.on"),
-    off: t("status.off"),
-    notSet: t("status.notSet"),
-  };
 
   const formatSubmittedAt = (timestamp: number) =>
     new Intl.DateTimeFormat(locale, {
@@ -62,23 +54,8 @@ export function InstructorsChecklistPage() {
                 : t("noSubmissions")}
           </CardDescription>
         </CardHeader>
-        <CardContent className="space-y-3">
-          {INSTRUCTOR_CHECKLIST_FIELDS.map((field) => {
-            const value = lastSubmission?.[field.key] ?? null;
-            const status = getStatusDisplay(value, statusLabels);
-
-            return (
-              <div
-                key={field.key}
-                className="flex items-center justify-between gap-4 border-b border-border pb-3 last:border-b-0 last:pb-0"
-              >
-                <span className="text-sm font-medium">
-                  {t(`fields.${field.labelKey}`)}
-                </span>
-                <span className={status.className}>{status.label}</span>
-              </div>
-            );
-          })}
+        <CardContent>
+          <SubmissionStatusFields values={lastSubmission} />
         </CardContent>
       </Card>
 
@@ -108,6 +85,12 @@ export function InstructorsChecklistPage() {
           submissionType={activeSubmissionType}
         />
       ) : null}
+
+      <div className="text-center">
+        <Button variant="link" render={<Link href="/instructors/submissions" />}>
+          {t("seeAllSubmissions")}
+        </Button>
+      </div>
     </main>
   );
 }

@@ -53,3 +53,23 @@ export const getLastSubmission = query({
       .first();
   },
 });
+
+export const listSubmissionsForDay = query({
+  args: {
+    staffGroup: v.literal("instructors"),
+    dayStart: v.number(),
+    dayEnd: v.number(),
+  },
+  handler: async (ctx, args) => {
+    return await ctx.db
+      .query("submissions")
+      .withIndex("by_staff_group_and_submitted_at", (q) =>
+        q
+          .eq("staffGroup", args.staffGroup)
+          .gte("submittedAt", args.dayStart)
+          .lt("submittedAt", args.dayEnd),
+      )
+      .order("desc")
+      .collect();
+  },
+});
