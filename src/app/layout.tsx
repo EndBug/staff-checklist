@@ -32,25 +32,25 @@ export default function RootLayout({
     >
       <body className="text-foreground flex min-h-screen flex-col">
         <ThemeProvider>
-          <Suspense
-            fallback={
-              <I18nProviderFallback>
-                <ConvexClientProvider>
-                  <AppHeader showLanguageToggle={false} />
-                  {children}
-                </ConvexClientProvider>
-              </I18nProviderFallback>
-            }
-          >
-            <NuqsAdapter>
+          <NuqsAdapter>
+            <Suspense
+              fallback={
+                <I18nProviderFallback>
+                  <ConvexClientProvider>
+                    <AppHeader showLanguageToggle={false} />
+                    {children}
+                  </ConvexClientProvider>
+                </I18nProviderFallback>
+              }
+            >
               <I18nProvider>
                 <ConvexClientProvider>
                   <AppHeader />
                   {children}
                 </ConvexClientProvider>
               </I18nProvider>
-            </NuqsAdapter>
-          </Suspense>
+            </Suspense>
+          </NuqsAdapter>
         </ThemeProvider>
       </body>
     </html>
