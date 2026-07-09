@@ -37,7 +37,15 @@ export const EMPTY_INSTRUCTOR_CHECKLIST_VALUES: InstructorChecklistValues = {
   downstairsScreenOn: null,
 };
 
-export type SubmissionType = "opening" | "closing";
+export const INSTRUCTOR_EVENT_TYPES = [
+  "coolingSystemReset",
+  "emergencyShutdown",
+  "other",
+] as const;
+
+export type InstructorEventType = (typeof INSTRUCTOR_EVENT_TYPES)[number];
+
+export type SubmissionType = "opening" | "closing" | "event";
 
 export function getStatusDisplay(
   value: NullableBoolean,

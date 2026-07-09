@@ -25,11 +25,14 @@
   "instructors": {
     "title": "Checklist Istruttori",
     "lastStatusTitle": "Ultimo stato inviato",
+    "lastEventTitle": "Ultimo evento inviato",
     "loadingSubmission": "Caricamento ultimo invio...",
     "noSubmissions": "Nessun invio ancora.",
+    "noEvents": "Nessun evento ancora.",
     "lastSubmission": "Inviato il {date} da {name} ({type})",
     "openingChecklist": "Apertura",
     "closingChecklist": "Chiusura",
+    "eventReport": "Segnala evento",
     "fields": {
       "coolingSystem": "Cooling system",
       "antechamberTv": "TV antecamera",
@@ -43,8 +46,15 @@
     },
     "submissionType": {
       "opening": "apertura",
-      "closing": "chiusura"
+      "closing": "chiusura",
+      "event": "evento"
     },
+    "eventType": {
+      "coolingSystemReset": "Cooling system reset",
+      "emergencyShutdown": "Emergency shutdown",
+      "other": "Altro"
+    },
+    "eventNoDetails": "Nessun dettaglio aggiuntivo.",
     "seeAllSubmissions": "Vedi tutti gli invii",
     "submissionsTitle": "Invii",
     "loadingSubmissions": "Caricamento invii...",
@@ -59,9 +69,15 @@
     "closingTitle": "Checklist chiusura",
     "openingDescription": "Registra lo stato della checklist istruttori per l'apertura.",
     "closingDescription": "Registra lo stato della checklist istruttori per la chiusura.",
+    "eventTitle": "Segnala evento",
+    "eventDescription": "Registra un evento singolo relativo all'operativita' istruttori.",
     "closingReminder": "Ricordati di spegnere tutte le luci e chiudere i cancelli.",
     "instructorName": "Nome istruttore",
     "instructorNamePlaceholder": "Seleziona istruttore",
+    "eventType": "Tipo evento",
+    "eventTypePlaceholder": "Seleziona evento",
+    "eventDetails": "Dettagli evento",
+    "eventDetailsPlaceholder": "Descrivi l'evento...",
     "statusAriaLabel": "Stato {field}",
     "cancel": "Annulla",
     "submit": "Invia",

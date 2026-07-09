@@ -20,6 +20,7 @@ import {
   endOfLocalDayExclusiveMs,
   startOfLocalDayMs,
 } from "~/lib/dates";
+import { type InstructorEventType, type SubmissionType } from "~/lib/checklist";
 import { dateParser } from "~/lib/search-params";
 
 export function SubmissionsPage() {
@@ -37,6 +38,20 @@ export function SubmissionsPage() {
     new Intl.DateTimeFormat(locale, {
       timeStyle: "short",
     }).format(new Date(timestamp));
+  const formatSubmissionType = (
+    submissionType: SubmissionType,
+    eventType: InstructorEventType | null,
+  ) => {
+    if (submissionType !== "event") {
+      return t(`submissionType.${submissionType}`);
+    }
+
+    if (!eventType) {
+      return t("submissionType.event");
+    }
+
+    return t(`eventType.${eventType}`);
+  };
 
   return (
     <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-8 px-4 py-8 sm:px-6">
@@ -86,12 +101,23 @@ export function SubmissionsPage() {
                   {t("submissionMeta", {
                     time: formatTime(submission.submittedAt),
                     name: submission.instructorName,
-                    type: t(`submissionType.${submission.submissionType}`),
+                    type: formatSubmissionType(
+                      submission.submissionType,
+                      submission.eventType ?? null,
+                    ),
                   })}
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <SubmissionStatusFields values={submission} />
+                {submission.submissionType === "event" ? (
+                  <p className="text-sm">
+                    {submission.eventType === "other" && submission.eventDetails
+                      ? submission.eventDetails
+                      : t("eventNoDetails")}
+                  </p>
+                ) : (
+                  <SubmissionStatusFields values={submission} />
+                )}
               </CardContent>
             </Card>
           ))}

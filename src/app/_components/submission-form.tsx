@@ -11,7 +11,9 @@ import {
 } from "../../../convex/instructors";
 import {
   EMPTY_INSTRUCTOR_CHECKLIST_VALUES,
+  INSTRUCTOR_EVENT_TYPES,
   INSTRUCTOR_CHECKLIST_FIELDS,
+  type InstructorEventType,
   type InstructorChecklistValues,
   type NullableBoolean,
   type SubmissionType,
@@ -97,12 +99,16 @@ export function SubmissionForm({
   const [values, setValues] = useState<InstructorChecklistValues>(
     EMPTY_INSTRUCTOR_CHECKLIST_VALUES,
   );
+  const [eventType, setEventType] = useState<InstructorEventType | "">("");
+  const [eventDetails, setEventDetails] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const resetForm = () => {
     setInstructorName("");
     setValues(EMPTY_INSTRUCTOR_CHECKLIST_VALUES);
+    setEventType("");
+    setEventDetails("");
     setError(null);
   };
 
@@ -125,6 +131,11 @@ export function SubmissionForm({
         staffGroup: "instructors",
         instructorName,
         ...values,
+        eventType: submissionType === "event" ? eventType || null : null,
+        eventDetails:
+          submissionType === "event" && eventType === "other"
+            ? eventDetails
+            : null,
       });
       handleOpenChange(false);
     } catch (submitError) {
@@ -139,11 +150,17 @@ export function SubmissionForm({
   };
 
   const title =
-    submissionType === "opening" ? t("openingTitle") : t("closingTitle");
+    submissionType === "opening"
+      ? t("openingTitle")
+      : submissionType === "closing"
+        ? t("closingTitle")
+        : t("eventTitle");
   const description =
     submissionType === "opening"
       ? t("openingDescription")
-      : t("closingDescription");
+      : submissionType === "closing"
+        ? t("closingDescription")
+        : t("eventDescription");
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
@@ -190,28 +207,68 @@ export function SubmissionForm({
             </select>
           </div>
 
-          <div className="space-y-4">
-            {INSTRUCTOR_CHECKLIST_FIELDS.map((field) => {
-              const fieldLabel = tInstructors(`fields.${field.labelKey}`);
+          {submissionType === "event" ? (
+            <div className="space-y-2">
+              <Label htmlFor="event-type">{t("eventType")}</Label>
+              <select
+                id="event-type"
+                value={eventType}
+                onChange={(event) => setEventType(event.target.value as InstructorEventType | "")}
+                required
+                className={cn(
+                  "h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 md:text-sm dark:bg-input/30",
+                  !eventType && "text-muted-foreground",
+                )}
+              >
+                <option value="" disabled>
+                  {t("eventTypePlaceholder")}
+                </option>
+                {INSTRUCTOR_EVENT_TYPES.map((option) => (
+                  <option key={option} value={option}>
+                    {tInstructors(`eventType.${option}`)}
+                  </option>
+                ))}
+              </select>
 
-              return (
-                <NullableToggle
-                  key={field.key}
-                  label={fieldLabel}
-                  value={values[field.key]}
-                  onChange={(nextValue) =>
-                    setValues((current) => ({
-                      ...current,
-                      [field.key]: nextValue,
-                    }))
-                  }
-                  onLabel={tInstructors("status.on")}
-                  offLabel={tInstructors("status.off")}
-                  ariaLabel={t("statusAriaLabel", { field: fieldLabel })}
-                />
-              );
-            })}
-          </div>
+              {eventType === "other" ? (
+                <div className="space-y-2">
+                  <Label htmlFor="event-details">{t("eventDetails")}</Label>
+                  <textarea
+                    id="event-details"
+                    value={eventDetails}
+                    onChange={(event) => setEventDetails(event.target.value)}
+                    required
+                    rows={4}
+                    className="w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-2 text-base transition-colors outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 md:text-sm dark:bg-input/30"
+                    placeholder={t("eventDetailsPlaceholder")}
+                  />
+                </div>
+              ) : null}
+            </div>
+          ) : (
+            <div className="space-y-4">
+              {INSTRUCTOR_CHECKLIST_FIELDS.map((field) => {
+                const fieldLabel = tInstructors(`fields.${field.labelKey}`);
+
+                return (
+                  <NullableToggle
+                    key={field.key}
+                    label={fieldLabel}
+                    value={values[field.key]}
+                    onChange={(nextValue) =>
+                      setValues((current) => ({
+                        ...current,
+                        [field.key]: nextValue,
+                      }))
+                    }
+                    onLabel={tInstructors("status.on")}
+                    offLabel={tInstructors("status.off")}
+                    ariaLabel={t("statusAriaLabel", { field: fieldLabel })}
+                  />
+                );
+              })}
+            </div>
+          )}
 
           {error ? (
             <p className="text-destructive text-sm" role="alert">

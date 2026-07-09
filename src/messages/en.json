@@ -25,11 +25,14 @@
   "instructors": {
     "title": "Instructors Checklist",
     "lastStatusTitle": "Last submitted status",
+    "lastEventTitle": "Last reported event",
     "loadingSubmission": "Loading latest submission...",
     "noSubmissions": "No submissions yet.",
+    "noEvents": "No events yet.",
     "lastSubmission": "Submitted {date} by {name} ({type})",
     "openingChecklist": "Opening",
     "closingChecklist": "Closing",
+    "eventReport": "Report event",
     "fields": {
       "coolingSystem": "Cooling system",
       "antechamberTv": "Antechamber TV",
@@ -43,8 +46,15 @@
     },
     "submissionType": {
       "opening": "opening",
-      "closing": "closing"
+      "closing": "closing",
+      "event": "event"
     },
+    "eventType": {
+      "coolingSystemReset": "Cooling system reset",
+      "emergencyShutdown": "Emergency shutdown",
+      "other": "Other"
+    },
+    "eventNoDetails": "No additional details.",
     "seeAllSubmissions": "See all submissions",
     "submissionsTitle": "Submissions",
     "loadingSubmissions": "Loading submissions...",
@@ -59,9 +69,15 @@
     "closingTitle": "Closing Checklist",
     "openingDescription": "Record the instructor checklist status for opening.",
     "closingDescription": "Record the instructor checklist status for closing.",
+    "eventTitle": "Report event",
+    "eventDescription": "Record a single-shot event for instructors.",
     "closingReminder": "Remember to turn off all lights and close the gates.",
     "instructorName": "Instructor name",
     "instructorNamePlaceholder": "Select instructor",
+    "eventType": "Event type",
+    "eventTypePlaceholder": "Select event",
+    "eventDetails": "Event details",
+    "eventDetailsPlaceholder": "Describe the event...",
     "statusAriaLabel": "{field} status",
     "cancel": "Cancel",
     "submit": "Submit",

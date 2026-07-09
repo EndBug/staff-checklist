@@ -8,7 +8,7 @@ import { useState } from "react";
 import { api } from "../../../convex/_generated/api";
 import { SubmissionForm } from "~/app/_components/submission-form";
 import { SubmissionStatusFields } from "~/app/_components/submission-status-fields";
-import { type SubmissionType } from "~/lib/checklist";
+import { type InstructorEventType, type SubmissionType } from "~/lib/checklist";
 import { Button, buttonVariants } from "~/components/ui/button";
 import {
   Card,
@@ -21,11 +21,28 @@ import {
 export function InstructorsChecklistPage() {
   const t = useTranslations("instructors");
   const locale = useLocale();
-  const lastSubmission = useQuery(api.submissions.getLastSubmission, {
+  const lastStatusSubmission = useQuery(api.submissions.getLastStatusSubmission, {
+    staffGroup: "instructors",
+  });
+  const lastEventSubmission = useQuery(api.submissions.getLastEventSubmission, {
     staffGroup: "instructors",
   });
   const [activeSubmissionType, setActiveSubmissionType] =
     useState<SubmissionType | null>(null);
+  const formatSubmissionType = (
+    submissionType: SubmissionType,
+    eventType: InstructorEventType | null,
+  ) => {
+    if (submissionType !== "event") {
+      return t(`submissionType.${submissionType}`);
+    }
+
+    if (!eventType) {
+      return t("submissionType.event");
+    }
+
+    return t(`eventType.${eventType}`);
+  };
 
   const formatSubmittedAt = (timestamp: number) =>
     new Intl.DateTimeFormat(locale, {
@@ -43,19 +60,58 @@ export function InstructorsChecklistPage() {
         <CardHeader>
           <CardTitle>{t("lastStatusTitle")}</CardTitle>
           <CardDescription>
-            {lastSubmission === undefined
+            {lastStatusSubmission === undefined
               ? t("loadingSubmission")
-              : lastSubmission
+              : lastStatusSubmission
                 ? t("lastSubmission", {
-                    date: formatSubmittedAt(lastSubmission.submittedAt),
-                    name: lastSubmission.instructorName,
-                    type: t(`submissionType.${lastSubmission.submissionType}`),
+                    date: formatSubmittedAt(lastStatusSubmission.submittedAt),
+                    name: lastStatusSubmission.instructorName,
+                    type: formatSubmissionType(
+                      lastStatusSubmission.submissionType,
+                      lastStatusSubmission.eventType ?? null,
+                    ),
                   })
                 : t("noSubmissions")}
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <SubmissionStatusFields values={lastSubmission} />
+          {lastStatusSubmission ? (
+            <SubmissionStatusFields values={lastStatusSubmission} />
+          ) : (
+            <p className="text-muted-foreground text-sm">{t("noSubmissions")}</p>
+          )}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>{t("lastEventTitle")}</CardTitle>
+          <CardDescription>
+            {lastEventSubmission === undefined
+              ? t("loadingSubmission")
+              : lastEventSubmission
+                ? t("lastSubmission", {
+                    date: formatSubmittedAt(lastEventSubmission.submittedAt),
+                    name: lastEventSubmission.instructorName,
+                    type: formatSubmissionType(
+                      lastEventSubmission.submissionType,
+                      lastEventSubmission.eventType ?? null,
+                    ),
+                  })
+                : t("noEvents")}
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          {lastEventSubmission ? (
+            <p className="text-sm">
+              {lastEventSubmission.eventType === "other" &&
+              lastEventSubmission.eventDetails
+                ? lastEventSubmission.eventDetails
+                : t("eventNoDetails")}
+            </p>
+          ) : (
+            <p className="text-muted-foreground text-sm">{t("noEvents")}</p>
+          )}
         </CardContent>
       </Card>
 
@@ -71,6 +127,12 @@ export function InstructorsChecklistPage() {
           onClick={() => setActiveSubmissionType("closing")}
         >
           {t("closingChecklist")}
+        </Button>
+        <Button
+          className="h-12 flex-1 text-base"
+          onClick={() => setActiveSubmissionType("event")}
+        >
+          {t("eventReport")}
         </Button>
       </div>
 
